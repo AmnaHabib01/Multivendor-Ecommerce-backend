@@ -9,11 +9,12 @@ import {
 import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
 import { validate } from "../../core/middleware/validate.js";
 import { storeProductCategorySchema,updateStoreProductCategorySchema } from "../../shared/validators/store.validation.js";
+import { authorizeRoles } from "../../core/middleware/authorizeRoles.js";
 
 const router = express.Router();
 
 // CREATE category (only store owner)
-router.post("/create", isLoggedIn, validate(storeProductCategorySchema), createStoreProductCategory);
+router.post("/create", isLoggedIn,authorizeRoles("store-admin"), validate(storeProductCategorySchema), createStoreProductCategory);
 
 // GET all categories (store owner only)
 router.get("/getall", isLoggedIn, getAllStoreProductCategories);

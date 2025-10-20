@@ -8,7 +8,7 @@ import {
   updateProductFeedback,
   deleteProductFeedback,
 } from "./storeProductFeedback.controller.js";
-import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
+import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
 
 const storeProductFeedbackRouter = Router();
 

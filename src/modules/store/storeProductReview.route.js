@@ -8,7 +8,7 @@ import {
   updateReview,
   deleteReview,
 } from "./storeProductReview.controller.js";
-import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
+import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
 
 const storeProductReviewRouter = Router();
 

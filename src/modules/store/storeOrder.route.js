@@ -8,8 +8,7 @@ import {
   updateOrder,
   deleteOrder,
 } from "./storeOrder.controller.js";
-import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
-
+import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
 const storeOrderRouter = Router();
 
 // storeId comes from URL, userId from auth

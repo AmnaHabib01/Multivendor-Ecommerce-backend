@@ -7,10 +7,11 @@ import {
   getStoreCategories,
   getFactoryCategories, 
 } from "./category.controller.js";
+import { authorizeRoles } from "../../core/middleware/authorizeRoles.js";
 
 const categoryRouter = express.Router();
 
-categoryRouter.post("/createCategory", validate(storeCategorySchema), createCategory);
+categoryRouter.post("/createCategory", authorizeRoles("super-admin"), validate(storeCategorySchema), createCategory);
 categoryRouter.get("/getallcategories", getAllCategories);
 categoryRouter.get("/storecategory", getStoreCategories);
 categoryRouter.get("/factorycategory", getFactoryCategories);
