@@ -1,4 +1,5 @@
 import Router from "express";
+import multer from "multer";
 import { validate } from "../../core/middleware/validate.js";
 import { storeProductFeedbackValidation } from "../../shared/validators/store.validation.js";
 import {
@@ -10,12 +11,13 @@ import {
 } from "./storeProductFeedback.controller.js";
 import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
 
-const storeProductFeedbackRouter = Router();
+const router = Router();
+const upload = multer({ storage: multer.memoryStorage() });
 
-storeProductFeedbackRouter.post("/", isLoggedIn, validate(storeProductFeedbackValidation), createProductFeedback);
-storeProductFeedbackRouter.get("/", isLoggedIn, getAllProductFeedback);
-storeProductFeedbackRouter.get("/:id", isLoggedIn, getProductFeedbackById);
-storeProductFeedbackRouter.put("/:id", isLoggedIn, validate(storeProductFeedbackValidation.partial()), updateProductFeedback);
-storeProductFeedbackRouter.delete("/:id", isLoggedIn,deleteProductFeedback);
+router.post("/", isLoggedIn, upload.single("storeProductImage"), validate(storeProductFeedbackValidation), createProductFeedback);
+router.get("/", isLoggedIn, getAllProductFeedback);
+router.get("/:id", isLoggedIn, getProductFeedbackById);
+router.put("/:id", isLoggedIn, upload.single("storeProductImage"), validate(storeProductFeedbackValidation.partial()), updateProductFeedback);
+router.delete("/:id", isLoggedIn, deleteProductFeedback);
 
-export default storeProductFeedbackRouter;
+export default router;

@@ -42,7 +42,7 @@ export const getFeedbackById = asyncHandler(async (req, res) => {
 
 // UPDATE (only owner can update)
 export const updateFeedback = asyncHandler(async (req, res) => {
-  const feedback = await StoreFeedBack.findById(req.params.id);
+  const feedback = await StoreFeedBack.findById(req.params._id);
   if (!feedback) throw new ApiError(404, "Feedback not found");
 
   if (feedback.userId.toString() !== req.user.id)

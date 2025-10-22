@@ -1,4 +1,5 @@
 import express from "express";
+import multer from "multer";
 import {
   createProduct,
   getAllProducts,
@@ -12,11 +13,23 @@ import { validate } from "../../core/middleware/validate.js";
 import { storeProductSchema, updateStoreProductSchema } from "../../shared/validators/store.validation.js";
 
 const storeProductRouter = express.Router();
+const upload = multer({ storage: multer.memoryStorage() });
 
-storeProductRouter.post("/create", isLoggedIn, authorizeRoles("store-admin"),validate(storeProductSchema), createProduct);           // Create product
-storeProductRouter.get("/getall", isLoggedIn, authorizeRoles("store-admin"), getAllProducts);           // Get all products
-storeProductRouter.get("/get/:id", isLoggedIn, authorizeRoles("store-admin"), getProductById);        // Get single product
-storeProductRouter.put("/update/:id", isLoggedIn, authorizeRoles("store-admin"),validate(updateStoreProductSchema), updateProduct);         // Update product
-storeProductRouter.delete("/delete/:id", isLoggedIn, authorizeRoles("store-admin"), deleteProduct);      // Delete product
+// Routes
+
+// 📍 Create product (with optional productImage)
+storeProductRouter.post("/create", isLoggedIn, authorizeRoles("store-admin"), upload.single("productImage"), validate(storeProductSchema), createProduct);
+
+// 📍 Get all products
+storeProductRouter.get("/getall", isLoggedIn, authorizeRoles("store-admin"), getAllProducts);
+
+// 📍 Get single product by ID
+storeProductRouter.get("/get/:id", isLoggedIn, authorizeRoles("store-admin"), getProductById);
+
+// 📍 Update product (with optional new productImage)
+storeProductRouter.put("/update/:id", isLoggedIn, authorizeRoles("store-admin"), upload.single("productImage"), validate(updateStoreProductSchema), updateProduct);
+
+// 📍 Delete product
+storeProductRouter.delete("/delete/:id", isLoggedIn, authorizeRoles("store-admin"), deleteProduct);
 
 export default storeProductRouter;
