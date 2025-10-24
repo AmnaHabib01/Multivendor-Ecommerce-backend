@@ -1,5 +1,5 @@
 import Router from "express";
-import multer from "multer";
+import { upload } from "../../core/middleware/multer.js";
 import { validate } from "../../core/middleware/validate.js";
 import { storeProductFeedbackValidation } from "../../shared/validators/store.validation.js";
 import {
@@ -12,7 +12,6 @@ import {
 import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
 
 const router = Router();
-const upload = multer({ storage: multer.memoryStorage() });
 
 router.post("/", isLoggedIn, upload.single("storeProductImage"), validate(storeProductFeedbackValidation), createProductFeedback);
 router.get("/", isLoggedIn, getAllProductFeedback);

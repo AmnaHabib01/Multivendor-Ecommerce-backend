@@ -1,7 +1,7 @@
-import Store from "../../models/Store.model.js";
-import StoreProduct from "../../models/StoreProduct.model.js";
-import { StoreProductFeedback } from "../../models/StoreProductFeedback.model.js";
-import { StoreProductReview } from "../../models/StoreProductReview.model.js";
+import Store from "../../models/store/Store.model.js";
+import StoreProduct from "../../models/store/StoreProduct.model.js";
+import { StoreProductFeedback } from "../../models/store/StoreProductFeedback.model.js";
+import { StoreProductReview } from "../../models/store/StoreProductReview.model.js";
 import S3UploadHelper from "../../shared/helpers/s3Upload.js";
 import { asyncHandler } from "../../core/utils/async-handler.js";
 

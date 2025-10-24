@@ -1,8 +1,8 @@
 import { asyncHandler } from "../../core/utils/async-handler.js";
 import { ApiError } from "../../core/utils/api-error.js";
 import { ApiResponse } from "../../core/utils/api-response.js";
-import { StoreOrders } from "../../models/StoreOrder.model.js";
-import StoreProduct from "../../models/StoreProduct.model.js";
+import { StoreOrders } from "../../models/store/StoreOrder.model.js";
+import StoreProduct from "../../models/store/StoreProduct.model.js";
 import S3UploadHelper from "../../shared/helpers/s3Upload.js";
 import { storeOrderValidation } from "../../shared/validators/store.validation.js";
 

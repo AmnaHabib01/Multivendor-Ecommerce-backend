@@ -1,8 +1,5 @@
-
-
-
 import { asyncHandler } from "../../core/utils/async-handler.js";
-import adminUser from "../../models/Admin.model.js";
+import adminUser from "../../models/admin/Admin.model.js";
 import { ApiError } from "../../core/utils/api-error.js";
 import { ApiResponse } from "../../core/utils/api-response.js";
 import { mailTransporter } from "../../shared/helpers/mail.helper.js";

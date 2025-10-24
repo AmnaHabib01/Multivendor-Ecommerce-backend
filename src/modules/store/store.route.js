@@ -1,5 +1,5 @@
 import express from "express";
-import multer from "multer";
+import { upload } from "../../core/middleware/multer.js";
 import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
 import { authorizeRoles } from "../../core/middleware/authorizeRoles.js";
 import { validate } from "../../core/middleware/validate.js";
@@ -7,7 +7,6 @@ import { createStoreSchema, updateStoreSchema } from "../../shared/validators/st
 import { createStore, getStoreDetails, updateStore, deleteStore, getAllStores } from "./store.controller.js";
 
 const router = express.Router();
-const upload = multer({ storage: multer.memoryStorage() });
 
 // Routes
 router.post("/createStore", isLoggedIn, authorizeRoles("store-admin"), upload.fields([

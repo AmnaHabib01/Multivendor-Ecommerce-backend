@@ -1,33 +1,5 @@
-// import express from "express";
-// import {
-//     registerAdmin,
-//     loginAdmin,
-//     logoutAdmin,
-//     verifyAdminMail,
-//     getAdminAccessToken,
-//     forgotAdminPasswordMail,
-//     resetAdminPassword
-// } from "../../modules/admin/admin.controller.js";
-// import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
-// import { validate } from "../../core/middleware/validate.js";
-// import { registerAdminSchema, loginAdminSchema, resetPasswordSchema} from "../../shared/validators/admin.validation.js";
-
-// const adminRouter = express.Router();
-
-// adminRouter.post("/register", validate(registerAdminSchema), registerAdmin);
-// adminRouter.post("/login", validate(loginAdminSchema), loginAdmin);
-// adminRouter.get("/verify/:token", verifyAdminMail);
-// adminRouter.get("/forgot-password", forgotAdminPasswordMail);
-// adminRouter.post("/reset-password/:token", validate(resetPasswordSchema), resetAdminPassword);
-// adminRouter.post("/logout", isLoggedIn, logoutAdmin);
-// adminRouter.get("/get-access-token", getAdminAccessToken);
-
-// export default adminRouter;
-
-
-
 import express from "express";
-import multer from "multer";
+import { upload } from "../../core/middleware/multer.js";
 import {
   registerAdmin,
   loginAdmin,
@@ -52,8 +24,6 @@ import {
 
 const adminRouter = express.Router();
 
-// ✅ Multer setup (in-memory for S3 uploads)
-const upload = multer({ storage: multer.memoryStorage() });
 
 // ------------------- AUTH ROUTES -------------------
 adminRouter.post("/register",upload.single("adminProfileImage"), validate(registerAdminSchema), registerAdmin);

@@ -1,9 +1,9 @@
 import { asyncHandler } from "../../core/utils/async-handler.js";
 import { ApiError } from "../../core/utils/api-error.js";
 import { ApiResponse } from "../../core/utils/api-response.js";
-import { StoreProductFeedback } from "../../models/StoreProductFeedback.model.js";
+import { StoreProductFeedback } from "../../models/store/StoreProductFeedback.model.js";
 import { storeProductFeedbackValidation } from "../../shared/validators/store.validation.js";
-import StoreProduct from "../../models/StoreProduct.model.js";
+import StoreProduct from "../../models/store/StoreProduct.model.js";
 import S3UploadHelper from "../../shared/helpers/s3Upload.js";
 
 /* =============================

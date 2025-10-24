@@ -1,6 +1,6 @@
 
 import express from "express";
-import multer from "multer";
+import { upload } from "../../core/middleware/multer.js";
 import {
   getAllUsers,
   createUser,
@@ -12,7 +12,6 @@ import {
 } from "../../modules/user/user.controller.js";
 
 const router = express.Router();
-const upload = multer({ storage: multer.memoryStorage() });
 
 // Routes
 

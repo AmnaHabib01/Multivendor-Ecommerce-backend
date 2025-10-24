@@ -1,5 +1,5 @@
 import express from "express";
-import multer from "multer";
+import { upload } from "../../core/middleware/multer.js";
 import {
   createProduct,
   getAllProducts,
@@ -13,7 +13,6 @@ import { validate } from "../../core/middleware/validate.js";
 import { storeProductSchema, updateStoreProductSchema } from "../../shared/validators/store.validation.js";
 
 const storeProductRouter = express.Router();
-const upload = multer({ storage: multer.memoryStorage() });
 
 // Routes
 

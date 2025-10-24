@@ -1,14 +1,12 @@
 
-
-
 import express from "express";
- import multer from "multer";
+import { upload } from "../../core/middleware/multer.js";
   import { isLoggedIn } from "../../core/middleware/isLoggedIn.js"; 
   import { authorizeRoles } from "../../core/middleware/authorizeRoles.js";
    import { validate } from "../../core/middleware/validate.js"; 
    import { createStoreProductCategory, getAllStoreProductCategories, getStoreProductCategoryById, updateStoreProductCategory, deleteStoreProductCategory } from "./storeProductCategory.controller.js"; import { storeProductCategorySchema, updateStoreProductCategorySchema } from "../../shared/validators/store.validation.js";
 
-const router = express.Router(); const upload = multer({ storage: multer.memoryStorage() });
+const router = express.Router(); 
 
 router.post("/create", isLoggedIn, authorizeRoles("store-admin"), upload.fields([{ name: "categoryLogo", maxCount: 1 }]), validate(storeProductCategorySchema), createStoreProductCategory); 
 router.get("/getall", isLoggedIn, getAllStoreProductCategories); 

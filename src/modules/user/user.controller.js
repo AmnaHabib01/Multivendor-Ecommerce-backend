@@ -4,16 +4,16 @@ import { ApiResponse } from "../../core/utils/api-response.js";
 import { asyncHandler } from "../../core/utils/async-handler.js";
 import S3UploadHelper from "../../shared/helpers/s3Upload.js";
 import User from "../../models/User.model.js";
-import StoreProduct from "../../models/StoreProduct.model.js";
-import {StoreOrders} from "../../models/StoreOrder.model.js";
+import StoreProduct from "../../models/store/StoreProduct.model.js";
+import {StoreOrders} from "../../models/store/StoreOrder.model.js";
 import { updateUserSchema } from "../../shared/validators/auth.validators.js";
-import Store from "../../models/Store.model.js";
-import { StoreFeedBack } from "../../models/StoreFeedback.model.js";
+import Store from "../../models/store/Store.model.js";
+import { StoreFeedBack } from "../../models/store/StoreFeedback.model.js";
 
-import { StoreProductCategory } from "../../models/StoreProductCategory.model.js";
-import { StoreProductFeedback } from "../../models/StoreProductFeedback.model.js";
-import { StoreProductReview } from "../../models/StoreProductReview.model.js";
-import { StoreTransaction } from "../../models/StoreTransaction.model.js";
+import { StoreProductCategory } from "../../models/store/StoreProductCategory.model.js";
+import { StoreProductFeedback } from "../../models/store/StoreProductFeedback.model.js";
+import { StoreProductReview } from "../../models/store/StoreProductReview.model.js";
+import { StoreTransaction } from "../../models/store/StoreTransaction.model.js";
 
 // 📍 Get all users
 export const getAllUsers = asyncHandler(async (req, res) => {
