@@ -170,16 +170,15 @@ export const deleteUser = asyncHandler(async (req, res) => {
 
   // ✅ Check if user has any related data
   const hasData = await Promise.all([
-    StoreProduct.exists({ createdBy: objectId }),
-    StoreOrders.exists({ user: objectId }),
-    Store.exists({ userID: objectId }),
-    StoreFeedBack.exists({ userID: objectId }),
-    StoreProductCategory.exists({ createdBy: objectId }),
-    StoreProductFeedback.exists({ userID: objectId }),
-    StoreProductReview.exists({ userID: objectId }),
-    StoreTransaction.exists({ userID: objectId }),
-  ]);
-
+  StoreProduct.exists({ userID: objectId }),                   // StoreProduct.userID
+  StoreOrders.exists({ userId: id }),                           // StoreOrders.userId (string in your schema)
+  Store.exists({ userID: objectId }),                           // Store.userID
+  StoreFeedBack.exists({ userId: objectId }),              
+  // StoreProductCategory.exists({ storeId: userStore._id }),  // Will handle after finding user's store
+  StoreProductFeedback.exists({ userId: objectId }),           // StoreProductFeedback.userId
+  StoreProductReview.exists({ userId: objectId }),             // StoreProductReview.userId
+  // StoreTransaction.exists({ storeId: userStore._id.toString() }) // handle after finding user's store
+]);
   const hasAnyData = hasData.some(Boolean);
 
   if (hasAnyData) {

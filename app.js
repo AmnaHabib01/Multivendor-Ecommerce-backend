@@ -28,10 +28,10 @@ import factoryRouter from "./src/modules/factory/factory.route.js";
 import factoryProductCategoryRouter from "./src/modules/factory/factoryProductCategory.route.js";
 import factoryProductRouter from "./src/modules/factory/factoryProduct.route.js";
 import factoryFeedbackRouter from "./src/modules/factory/factoryFeedback.route.js";
-import factoryProductFeedbackRoutes from "./src/modules/factory/factoryProductFeedback.routes.js";
-import FactoryProductReviewRoutes from "./src/modules/factory/factoryProductReview.routes.js";
-import factoryOrderRouter from "./src/modules/factory/factoryOrder.routes.js";
-import factoryTransactionRouter from "./src/modules/factory/factoryTransaction.routes.js";
+import factoryProductFeedbackRoutes from "./src/modules/factory/factoryProductFeedback.route.js";
+import FactoryProductReviewRoutes from "./src/modules/factory/factoryProductReview.route.js";
+import factoryOrderRouter from "./src/modules/factory/factoryOrder.route.js";
+import factoryTransactionRouter from "./src/modules/factory/factoryTransaction.route.js";
 const app = express();
 dotenv.config();
 

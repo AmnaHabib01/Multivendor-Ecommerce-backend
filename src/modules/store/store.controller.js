@@ -142,29 +142,33 @@ export const updateStore = asyncHandler(async (req, res) => {
 // ---------- DELETE STORE ----------
 export const deleteStore = asyncHandler(async (req, res) => {
   const userId = req.user._id;
+
+  // 1️⃣ Find the store owned by the user
   const store = await Store.findOne({ userID: userId });
   if (!store) throw new ApiError(404, "Store not found");
 
   const storeId = store._id;
 
-  // 🖼️ Delete images from S3 if exist
+  // 2️⃣ Delete store images from S3 if they exist
   if (store.storeLogo) await S3UploadHelper.deleteFile(store.storeLogo).catch(() => {});
   if (store.storeCoverImage) await S3UploadHelper.deleteFile(store.storeCoverImage).catch(() => {});
   if (store.idCardImage) await S3UploadHelper.deleteFile(store.idCardImage).catch(() => {});
 
-  // 🧹 Delete all related documents
+  // 3️⃣ Delete all related documents using correct fields
   await Promise.all([
-    StoreFeedBack.deleteMany({ storeId }),
-    StoreOrders.deleteMany({ storeId }),
-    StoreProduct.deleteMany({ storeId }),
-    StoreTransaction.deleteMany({ storeId }),
-    StoreProductFeedback.deleteMany({ storeId }),
-    StoreProductReview.deleteMany({ storeId }),
-    StoreProductCategory.deleteMany({ storeId }),
+    StoreFeedBack.deleteMany({ storeId }),                   // store feedback linked by storeId
+    StoreOrders.deleteMany({ storeId: storeId.toString() }), // orders storeId stored as string
+    StoreProduct.deleteMany({ storeId }),                    // products linked by storeId
+    StoreTransaction.deleteMany({ storeId: storeId.toString() }), // transactions storeId as string
+    StoreProductFeedback.deleteMany({ storeId }),            // product feedback linked by storeId
+    StoreProductReview.deleteMany({ storeId }),              // product reviews linked by storeId
+    StoreProductCategory.deleteMany({ storeId })             // product categories linked by storeId
   ]);
 
+  // 4️⃣ Delete the store itself
   await Store.deleteOne({ _id: storeId });
 
+  // 5️⃣ Return success response
   return res
     .status(200)
     .json(new ApiResponse(200, null, "Store and all associated data deleted successfully"));
