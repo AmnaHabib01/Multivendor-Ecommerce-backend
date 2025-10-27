@@ -1,5 +1,5 @@
 import Router from "express";
-import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
+import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
 import { validate } from "../../core/middleware/validate.js";
 import { storeFeedbackValidation } from "../../shared/validators/store.validation.js";
 import {

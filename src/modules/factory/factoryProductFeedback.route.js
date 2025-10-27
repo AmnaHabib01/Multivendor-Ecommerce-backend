@@ -6,7 +6,7 @@ import {
   updateFactoryProductFeedback,
   deleteFactoryProductFeedback,
 } from "./factoryProductFeedback.controller.js";
-import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
+import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
 import { upload } from "../../core/middleware/multer.js";
 import { authorizeRoles } from "../../core/middleware/authorizeRoles.js";
 

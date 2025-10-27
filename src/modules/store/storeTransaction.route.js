@@ -8,7 +8,7 @@ import {
   updateTransaction,
   deleteTransaction,
 } from "./storeTransaction.controller.js";
-import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
+import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
 
 const storeTransactionRouter = Router();
 

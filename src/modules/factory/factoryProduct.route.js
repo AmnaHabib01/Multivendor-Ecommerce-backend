@@ -1,6 +1,6 @@
 import express from "express";
 import { upload } from "../../core/middleware/multer.js";
-import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
+import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
 import { authorizeRoles } from "../../core/middleware/authorizeRoles.js";
 import { validate } from "../../core/middleware/validate.js";
 import {

@@ -9,7 +9,7 @@ import {
   // updateOrder,
   deleteOrder,
 } from "./storeOrder.controller.js";
-import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
+import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
 import { authorizeRoles } from "../../core/middleware/authorizeRoles.js";   
 const storeOrderRouter = Router();
 

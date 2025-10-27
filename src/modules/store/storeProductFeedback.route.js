@@ -9,7 +9,7 @@ import {
   updateProductFeedback,
   deleteProductFeedback,
 } from "./storeProductFeedback.controller.js";
-import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
+import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
 
 const router = Router();
 

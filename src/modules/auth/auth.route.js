@@ -15,7 +15,7 @@ import {
   resetPassword,
   verifyUserMail,
 } from "./auth.controller.js";
-import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
+import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
 
 const authRouter = Router();
 

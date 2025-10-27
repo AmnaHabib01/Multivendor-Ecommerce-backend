@@ -8,7 +8,7 @@ import {
   getFactoryCategories, 
 } from "./category.controller.js";
 import { authorizeRoles } from "../../core/middleware/authorizeRoles.js";
-import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
+import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
 
 const categoryRouter = express.Router();
 

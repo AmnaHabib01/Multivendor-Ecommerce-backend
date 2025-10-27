@@ -7,7 +7,7 @@ import {
   updateProduct,
   deleteProduct,
 } from "./storeProduct.controller.js";
-import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
+import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
 import { authorizeRoles } from "../../core/middleware/authorizeRoles.js";
 import { validate } from "../../core/middleware/validate.js";
 import { storeProductSchema, updateStoreProductSchema } from "../../shared/validators/store.validation.js";

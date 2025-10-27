@@ -14,7 +14,7 @@ import {
   deleteAdminProfile
 } from "../../modules/admin/admin.controller.js";
 
-import { isLoggedIn } from "../../core/middleware/isLoggedIn.js";
+import { isLoggedIn } from "../../core/middleware/isLoggedin.js";
 import { validate } from "../../core/middleware/validate.js";
 import {
   registerAdminSchema,
