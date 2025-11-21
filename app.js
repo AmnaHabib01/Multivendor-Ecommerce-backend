@@ -36,7 +36,12 @@ const app = express();
 dotenv.config();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:5173", // frontend origin
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -64,10 +69,10 @@ app.use("/api/v1/factory", factoryRouter);
 app.use("/api/v1/factory/products", factoryProductRouter);
 app.use("/api/v1/factory-product-category", factoryProductCategoryRouter);
 app.use("/api/v1/factory-feedback", factoryFeedbackRouter);
-app.use("/api/factory-product-feedbacks", factoryProductFeedbackRoutes);
+app.use("/api/v1/factory-product-feedbacks", factoryProductFeedbackRoutes);
 app.use("/api/v1/factory-product-reviews", FactoryProductReviewRoutes);
 app.use("/api/v1/factory-orders", factoryOrderRouter);
-app.use("/api/factory/transactions", factoryTransactionRouter);
+app.use("/api/v1/factory/transactions", factoryTransactionRouter);
 // Health check
 app.get("/health", (req, res) => {
   res.status(200).json({
